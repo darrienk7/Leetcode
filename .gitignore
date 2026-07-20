@@ -1,0 +1,18 @@
+# IntelliJ user-specific files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/shelf/
+
+# Build output
+out/
+build/
+
+# Java compiled files
+*.class
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
