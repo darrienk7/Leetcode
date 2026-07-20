@@ -1,18 +1,41 @@
-# IntelliJ user-specific files
-.idea/workspace.xml
-.idea/tasks.xml
-.idea/shelf/
+# =====================
+# IntelliJ / CLion IDE files
+# =====================
+.idea/
+*.iml
 
-# Build output
+# =====================
+# Java
+# =====================
 out/
-build/
-
-# Java compiled files
 *.class
 
+# =====================
+# C++ / CMake
+# =====================
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Compiled executables
+*.exe
+*.out
+main
+
+# Object files
+*.o
+*.obj
+
+# =====================
 # Logs
+# =====================
 *.log
 
+# =====================
 # OS files
+# =====================
 .DS_Store
 Thumbs.db
