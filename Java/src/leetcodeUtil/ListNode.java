@@ -1,4 +1,4 @@
-package util;
+package leetcodeUtil;
 
 /**Definition for singly-linked list. */
 

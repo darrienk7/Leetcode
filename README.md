@@ -1,3 +1,3 @@
 # Leetcode
-Leetcode solutions, java and cpp
-Notes for future reference
+leetcode debug for contest and problems
+to paste into leetcode.com
