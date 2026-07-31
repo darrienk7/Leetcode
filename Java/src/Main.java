@@ -5,14 +5,13 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.*;
 import leetcodeUtil.*;
-import static leetcodeUtil.ArgType.*;
 
 public class Main {
     static Solution sol = new Solution();
 
     public static void main(String[] args) throws Exception {
 
-        runTests(INT_MATRIX, INT);
+        runTests();
 
     }
 
@@ -32,17 +31,10 @@ public class Main {
     }
 
     private static String stringify(Object o) {
-        if (o instanceof int[]) return Arrays.toString((int[]) o);
-        if (o instanceof int[][]) return Arrays.deepToString((int[][]) o);
+        if (o == null) return "null";
+        TypeAdapter<Object> adapter = TypeAdapters.find((Class<Object>) o.getClass());
+        if (adapter != null) return adapter.stringify(o);
         if (o instanceof Object[]) return Arrays.deepToString((Object[]) o);
-        if (o instanceof ListNode) {
-            StringBuilder sb = new StringBuilder("[");
-            for (ListNode n = (ListNode) o; n != null; n = n.next) {
-                sb.append(n.val);
-                if (n.next != null) sb.append(",");
-            }
-            return sb.append("]").toString();
-        }
         return String.valueOf(o);
     }
 
@@ -72,58 +64,18 @@ public class Main {
         };
     }
 
-    private static Object convert(Object raw, ArgType type) {
-        switch (type) {
-            case INT:      return ((Number) raw).intValue();
-            case DOUBLE:   return ((Number) raw).doubleValue();
-            case BOOLEAN:  return (Boolean) raw;
-            case STRING:   return (String) raw;
-            case INT_ARRAY: {
-                List<?> list = (List<?>) raw;
-                int[] arr = new int[list.size()];
-                for (int i = 0; i < arr.length; i++) arr[i] = ((Number) list.get(i)).intValue();
-                return arr;
-            }
-            case INT_MATRIX: {
-                List<?> outer = (List<?>) raw;
-                int[][] arr = new int[outer.size()][];
-                for (int i = 0; i < arr.length; i++) {
-                    List<?> inner = (List<?>) outer.get(i);
-                    int[] row = new int[inner.size()];
-                    for (int j = 0; j < row.length; j++) row[j] = ((Number) inner.get(j)).intValue();
-                    arr[i] = row;
-                }
-                return arr;
-            }
-            case STRING_ARRAY: {
-                List<?> list = (List<?>) raw;
-                String[] arr = new String[list.size()];
-                for (int i = 0; i < arr.length; i++) arr[i] = (String) list.get(i);
-                return arr;
-            }
-            case LINKED_LIST: {
-                ListNode dummy = new ListNode(0), cur = dummy;
-                for (Object o : (List<?>) raw) {
-                    cur.next = new ListNode(((Number) o).intValue());
-                    cur = cur.next;
-                }
-                return dummy.next;
-            }
-            default: throw new IllegalArgumentException("Unsupported type: " + type);
-        }
-    }
+    private static void runTests() throws Exception {
+        Class<?>[] paramTypes = getSolutionMethod().getParameterTypes();
 
-    private static void runTests(ArgType... signature) throws Exception {
         List<String> lines = Files.readAllLines(Path.of("testcases.txt"));
         lines.removeIf(String::isBlank);
-        for (int i = 0; i + signature.length <= lines.size(); i += signature.length) {
-            Object[] args = new Object[signature.length];
-            for (int j = 0; j < signature.length; j++) {
-                args[j] = convert(parseValue(lines.get(i + j)), signature[j]);
+        for (int i = 0; i + paramTypes.length <= lines.size(); i += paramTypes.length) {
+            Object[] args = new Object[paramTypes.length];
+            for (int j = 0; j < paramTypes.length; j++) {
+                args[j] = TypeAdapters.get(paramTypes[j]).convert(parseValue(lines.get(i + j)));
             }
             test(args);
         }
     }
 
 }
-
