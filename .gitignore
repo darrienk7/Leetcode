@@ -1,5 +1,5 @@
 # =====================
-# IntelliJ / CLion IDE files
+# IntelliJ / CLion / PyCharm IDE files
 # =====================
 .idea/
 *.iml
@@ -28,6 +28,46 @@ main
 # Object files
 *.o
 *.obj
+
+# =====================
+# Python
+# =====================
+
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Build / distribution files
+build/
+dist/
+*.egg-info/
+.eggs/
+
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Type checker / linter caches
+.mypy_cache/
+.ruff_cache/
+.pyre/
+
+# Jupyter
+.ipynb_checkpoints/
 
 # =====================
 # Logs
