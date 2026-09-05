@@ -2,11 +2,11 @@ import inspect
 import json
 from pathlib import Path
 
-from Python.src.leetcode_util.adapters import to_json_value
+from leetcode_util.adapters import to_json_value
 from solution import Solution
 
 
-TESTCASE_FILE = Path(__file__).resolve().parent.parent / "testcases.txt"
+TESTCASE_FILE = Path(__file__).resolve().parent.parent.parent / "testcases.txt"
 
 
 def get_solution_method(solution):
