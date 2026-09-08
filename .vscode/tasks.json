@@ -1,0 +1,25 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "LeetCode: Prepare Java",
+            "type": "process",
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "runner", "prepare", "--language", "java"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$javac"]
+        },
+        {
+            "label": "LeetCode: Prepare C++",
+            "type": "process",
+            "command": "${command:python.interpreterPath}",
+            "args": ["-m", "runner", "prepare", "--language", "cpp"],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": ["$msCompile"]
+        }
+    ]
+}

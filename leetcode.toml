@@ -1,0 +1,5 @@
+# Change this value when you switch problems. Commands may also receive a
+# problem id or slug explicitly, for example: python -m runner test 1
+active_problem = "0001-two-sum"
+default_language = "python"
+

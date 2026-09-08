@@ -2,12 +2,35 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Debug Main File",
+            "name": "LeetCode: Debug Python",
             "type": "debugpy",
             "request": "launch",
-            "program": "Python/src/main.py", 
+            "module": "runner",
+            "args": ["test", "--language", "python"],
+            "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "justMyCode": true
+        },
+        {
+            "name": "LeetCode: Debug Java",
+            "type": "java",
+            "request": "launch",
+            "mainClass": "Main",
+            "classPaths": [
+                "${workspaceFolder}/build/current/java/classes"
+            ],
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "LeetCode: Prepare Java"
+        },
+        {
+            "name": "LeetCode: Debug C++",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/current/cpp/leetcode.exe",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "LeetCode: Prepare C++"
         }
     ]
 }

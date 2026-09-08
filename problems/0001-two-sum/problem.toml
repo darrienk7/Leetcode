@@ -1,0 +1,14 @@
+[problem]
+id = 1
+slug = "two-sum"
+
+[solution]
+class_name = "Solution"
+method = "twoSum"
+parameters = ["list[int]", "int"]
+return_type = "list[int]"
+
+[files]
+cpp = "solution.cpp"
+java = "Solution.java"
+python = "solution.py"
