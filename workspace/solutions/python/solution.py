@@ -1,4 +1,6 @@
 class Solution:
+    """PLACEHOLDER: replace this method for the active problem."""
+
     def twoSum(self, nums: list[int], target: int) -> list[int]:
         seen: dict[int, int] = {}
 

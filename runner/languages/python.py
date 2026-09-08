@@ -49,7 +49,7 @@ class PythonAdapter(LanguageAdapter):
         if not path.is_file():
             raise FileNotFoundError(f"Python solution not found: {path}")
 
-        module_name = f"leetcode_{problem.problem_id}_{problem.slug.replace('-', '_')}"
+        module_name = f"leetcode_workspace_{problem.slug.replace('-', '_')}"
         specification = importlib.util.spec_from_file_location(module_name, path)
         if specification is None or specification.loader is None:
             raise ImportError(f"Could not load Python solution: {path}")

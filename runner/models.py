@@ -11,15 +11,19 @@ MISSING = object()
 @dataclass(frozen=True)
 class ProjectConfig:
     root: Path
-    active_problem: str
+    workspace: Path
     default_language: str
 
 
 @dataclass(frozen=True)
 class Problem:
     root: Path
-    problem_id: int
+    frontend_id: str
+    title: str
     slug: str
+    source_provider: str
+    source_url: str
+    is_placeholder: bool
     class_name: str
     method_name: str
     parameter_types: tuple[str, ...]
@@ -27,8 +31,9 @@ class Problem:
     solution_files: dict[str, str]
 
     @property
-    def key(self) -> str:
-        return f"{self.problem_id:04d}-{self.slug}"
+    def display_name(self) -> str:
+        identifier = f"{self.frontend_id}. " if self.frontend_id else ""
+        return f"{identifier}{self.title}"
 
     @property
     def cases_path(self) -> Path:
@@ -41,7 +46,15 @@ class Problem:
             raise ValueError(
                 f"Problem {self.key} has no {language!r} solution configured"
             ) from error
-        return self.root / filename
+        workspace_root = self.root.resolve()
+        candidate = (workspace_root / filename).resolve()
+        try:
+            candidate.relative_to(workspace_root)
+        except ValueError as error:
+            raise ValueError(
+                f"Solution path for {language!r} leaves the workspace: {filename}"
+            ) from error
+        return candidate
 
 
 @dataclass(frozen=True)

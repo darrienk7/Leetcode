@@ -1,5 +1,3 @@
-# Change this value when you switch problems. Commands may also receive a
-# problem id or slug explicitly, for example: python -m runner test 1
-active_problem = "0001-two-sum"
+# This repository contains one active scratch workspace, not a problem archive.
+workspace_directory = "workspace"
 default_language = "python"
-

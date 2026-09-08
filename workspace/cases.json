@@ -1,16 +1,16 @@
 [
   {
-    "name": "first example",
+    "name": "placeholder example 1",
     "args": [[2, 7, 11, 15], 9],
     "expected": [0, 1]
   },
   {
-    "name": "second example",
+    "name": "placeholder example 2",
     "args": [[3, 2, 4], 6],
     "expected": [1, 2]
   },
   {
-    "name": "duplicate values",
+    "name": "placeholder duplicate values",
     "args": [[3, 3], 6],
     "expected": [0, 1]
   }

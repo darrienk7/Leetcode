@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
+// PLACEHOLDER: replace this method for the active problem.
 class Solution {
     public int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> seen = new HashMap<>();

@@ -67,7 +67,7 @@ class JavaAdapter(LanguageAdapter):
 
     @staticmethod
     def _build_directory(problem: Problem) -> Path:
-        return problem.root.parent.parent / "build" / "current" / "java"
+        return problem.root.parent / "build" / "current" / "java"
 
     @staticmethod
     def _parse_results(cases: list[TestCase], output: str) -> list[CaseResult]:
@@ -184,4 +184,3 @@ public class Main {{
     }}
 }}
 """
-

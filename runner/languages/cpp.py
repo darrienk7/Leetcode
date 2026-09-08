@@ -53,7 +53,7 @@ class CppAdapter(LanguageAdapter):
 
         completed = subprocess.run(
             command,
-            cwd=problem.root.parent.parent,
+            cwd=problem.root.parent,
             env=environment,
             capture_output=True,
             text=True,
@@ -79,7 +79,7 @@ class CppAdapter(LanguageAdapter):
 
     @staticmethod
     def _build_directory(problem: Problem) -> Path:
-        return problem.root.parent.parent / "build" / "current" / "cpp"
+        return problem.root.parent / "build" / "current" / "cpp"
 
     @classmethod
     def _executable(cls, problem: Problem) -> Path:

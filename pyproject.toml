@@ -1,9 +1,8 @@
 [project]
 name = "leetcode-workbench"
 version = "0.1.0"
-description = "A Python-controlled, language-neutral LeetCode workbench"
+description = "A Python-controlled, single-problem LeetCode workbench"
 requires-python = ">=3.11"
 
 [project.scripts]
 lc = "runner.cli:main"
-

@@ -1,0 +1,22 @@
+# PLACEHOLDER ONLY: this describes the current scratch problem, not an archive.
+[problem]
+frontend_id = "1"
+title = "Two Sum"
+slug = "two-sum"
+
+[source]
+provider = "placeholder"
+url = "https://leetcode.com/problems/two-sum/"
+placeholder = true
+
+[solution]
+class_name = "Solution"
+method = "twoSum"
+parameters = ["list[int]", "int"]
+return_type = "list[int]"
+
+[files]
+cpp = "solutions/cpp/Solution.cpp"
+java = "solutions/java/Solution.java"
+python = "solutions/python/solution.py"
+
