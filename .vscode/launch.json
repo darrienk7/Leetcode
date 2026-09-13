@@ -5,13 +5,7 @@
             "name": "Python: Debug Main File",
             "type": "debugpy",
             "request": "launch",
-<<<<<<< HEAD
-            "module": "runner",
-            "args": ["run", "--language", "python"],
-            "cwd": "${workspaceFolder}",
-=======
             "program": "Python/src/main.py", 
->>>>>>> parent of 68fefbd (first test migration to python based runner)
             "console": "integratedTerminal",
             "justMyCode": true
         }
