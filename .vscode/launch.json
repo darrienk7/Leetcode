@@ -2,35 +2,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "LeetCode: Debug Python",
+            "name": "Python: Debug Main File",
             "type": "debugpy",
             "request": "launch",
+<<<<<<< HEAD
             "module": "runner",
             "args": ["run", "--language", "python"],
             "cwd": "${workspaceFolder}",
+=======
+            "program": "Python/src/main.py", 
+>>>>>>> parent of 68fefbd (first test migration to python based runner)
             "console": "integratedTerminal",
             "justMyCode": true
-        },
-        {
-            "name": "LeetCode: Debug Java",
-            "type": "java",
-            "request": "launch",
-            "mainClass": "Main",
-            "classPaths": [
-                "${workspaceFolder}/build/current/java/classes"
-            ],
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "preLaunchTask": "LeetCode: Prepare Java"
-        },
-        {
-            "name": "LeetCode: Debug C++",
-            "type": "cppvsdbg",
-            "request": "launch",
-            "program": "${workspaceFolder}/build/current/cpp/leetcode.exe",
-            "cwd": "${workspaceFolder}",
-            "console": "integratedTerminal",
-            "preLaunchTask": "LeetCode: Prepare C++"
         }
     ]
 }

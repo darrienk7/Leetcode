@@ -1,11 +1,9 @@
-# LeetCode Workbench
+# Leetcode
 
-A problem-first LeetCode environment with Python as the orchestration layer.
-Solutions may be written in multiple languages while sharing the same problem
-metadata and test cases.
+Leetcode environment to test and debug solutions, custom runner so typing solution into specified class works seamlessly.
 
-## Current commands
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 ## Files you edit
 
@@ -71,4 +69,7 @@ automatically; do not create or maintain a separate Java entry point.
 
 The original `Python/`, `Java/`, and `cpp/` directories remain temporarily as
 migration references.
+=======
+Copy and paste the test cases into testcase.txt
+>>>>>>> parent of 68fefbd (first test migration to python based runner)
 
