@@ -3,7 +3,7 @@
     "tasks": [
         {
             "label": "LeetCode: Prepare Java",
-            "type": "process",
+            "type": "shell",
             "command": "${command:python.interpreterPath}",
             "args": ["-m", "runner", "prepare", "--language", "java"],
             "options": {
@@ -13,7 +13,7 @@
         },
         {
             "label": "LeetCode: Prepare C++",
-            "type": "process",
+            "type": "shell",
             "command": "${command:python.interpreterPath}",
             "args": ["-m", "runner", "prepare", "--language", "cpp"],
             "options": {

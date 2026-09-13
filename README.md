@@ -16,8 +16,11 @@ Choose one solution file and replace its placeholder method:
 - Java: `workspace/solutions/java/Solution.java`
 - C++: `workspace/solutions/cpp/Solution.cpp`
 
-For manual problem changes, also update `workspace/problem.toml` and
-`workspace/cases.json`. Generated harnesses and binaries live under ignored
+For manual problem changes, also update `workspace/problem.toml` and paste the
+raw testcase values into `workspace/testcases.txt`. Use one argument per
+nonblank line. The runner groups them sequentially according to the method
+signature and prints each result; expected outputs are not required. Generated
+harnesses and binaries live under ignored
 `build/`; never edit them.
 
 ## Commands
@@ -27,11 +30,10 @@ Run commands from the repository root:
 ```powershell
 python -m runner info
 python -m runner run
-python -m runner test
-python -m runner test --case 2
-python -m runner test --language java
-python -m runner test --language cpp
-python -m runner test --all
+python -m runner run --case 2
+python -m runner run --language java
+python -m runner run --language cpp
+python -m runner run --all
 ```
 
 `leetcode.toml` selects the workspace directory and default language. You can
@@ -45,7 +47,7 @@ Python runner to prepare a native harness before their native debugger starts.
 
 For IntelliJ IDEA, open this repository as the project and edit only
 `workspace/solutions/java/Solution.java`. Run tests from IntelliJ's terminal
-with `python -m runner test --language java`. The runner supplies `Main`
+with `python -m runner run --language java`. The runner supplies `Main`
 automatically; do not create or maintain a separate Java entry point.
 
 ## Future problem-link import

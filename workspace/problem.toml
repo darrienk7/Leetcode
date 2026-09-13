@@ -1,22 +1,19 @@
-# PLACEHOLDER ONLY: this describes the current scratch problem, not an archive.
+# This describes only the problem currently loaded in the scratch workspace.
 [problem]
-frontend_id = "1"
-title = "Two Sum"
-slug = "two-sum"
+frontend_id = ""
+title = "Count Commas"
+slug = "count-commas"
 
 [source]
-provider = "placeholder"
-url = "https://leetcode.com/problems/two-sum/"
-placeholder = true
+provider = "manual"
+url = ""
+placeholder = false
 
 [solution]
 class_name = "Solution"
-method = "twoSum"
-parameters = ["list[int]", "int"]
-return_type = "list[int]"
+method = "countCommas"
+parameters = ["int"]
+return_type = "int"
 
 [files]
-cpp = "solutions/cpp/Solution.cpp"
 java = "solutions/java/Solution.java"
-python = "solutions/python/solution.py"
-

@@ -3,7 +3,7 @@
 ## Goal
 
 Accept one LeetCode problem URL and safely refresh the single active
-`workspace/` with its metadata, signature, starter code, and example cases.
+`workspace/` with its metadata, signature, starter code, and raw testcase inputs.
 This phase is planned but **not implemented**.
 
 The intended command is:
@@ -57,7 +57,7 @@ paths or commands. A normalized payload should include:
 - class and method names;
 - ordered canonical parameter types and return type;
 - starter code keyed by language;
-- structured example inputs and expected outputs when reliably available;
+- raw example inputs ordered by the method's parameters;
 - provider name and retrieval timestamp.
 
 ### Normalizer
@@ -77,7 +77,7 @@ than generating code that merely looks plausible.
 The updater builds a change plan before writing anything. It owns only:
 
 - `workspace/problem.toml`;
-- `workspace/cases.json`;
+- `workspace/testcases.txt`;
 - starter-code suggestions staged outside the editable solution paths.
 
 Existing files under `workspace/solutions/` are user work. Default behavior:
@@ -115,4 +115,3 @@ Existing files under `workspace/solutions/` are user work. Default behavior:
 The local fixture provider comes first so the entire import pipeline can be
 tested without network access, credentials, endpoint instability, or load on an
 external service.
-

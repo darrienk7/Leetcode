@@ -6,7 +6,7 @@
             "type": "debugpy",
             "request": "launch",
             "module": "runner",
-            "args": ["test", "--language", "python"],
+            "args": ["run", "--language", "python"],
             "cwd": "${workspaceFolder}",
             "console": "integratedTerminal",
             "justMyCode": true

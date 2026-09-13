@@ -5,9 +5,6 @@ from pathlib import Path
 from typing import Any
 
 
-MISSING = object()
-
-
 @dataclass(frozen=True)
 class ProjectConfig:
     root: Path
@@ -37,14 +34,15 @@ class Problem:
 
     @property
     def cases_path(self) -> Path:
-        return self.root / "cases.json"
+        return self.root / "testcases.txt"
 
     def solution_path(self, language: str) -> Path:
         try:
             filename = self.solution_files[language]
         except KeyError as error:
             raise ValueError(
-                f"Problem {self.key} has no {language!r} solution configured"
+                f"Active problem {self.display_name!r} has no "
+                f"{language!r} solution configured"
             ) from error
         workspace_root = self.root.resolve()
         candidate = (workspace_root / filename).resolve()
@@ -59,21 +57,11 @@ class Problem:
 
 @dataclass(frozen=True)
 class TestCase:
-    name: str
     arguments: tuple[Any, ...]
-    expected: Any = MISSING
 
 
 @dataclass(frozen=True)
 class CaseResult:
     case: TestCase
-    actual: Any = MISSING
+    actual: Any = None
     error: Exception | None = None
-
-    @property
-    def passed(self) -> bool:
-        return (
-            self.error is None
-            and self.case.expected is not MISSING
-            and self.actual == self.case.expected
-        )
