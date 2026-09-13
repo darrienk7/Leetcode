@@ -6,7 +6,7 @@ import sys
 from collections.abc import Sequence
 
 from runner.cases import load_cases
-from runner.config import load_project, load_workspace
+from runner.config import discover_problems, load_project, resolve_problem
 from runner.languages import get_adapter
 from runner.models import CaseResult
 
@@ -18,13 +18,18 @@ def _parser() -> argparse.ArgumentParser:
     )
     commands = parser.add_subparsers(dest="command", required=True)
 
-    commands.add_parser("info", help="show the active workspace")
+    commands.add_parser("list", help="list configured problems")
 
     for name, help_text in (
         ("prepare", "prepare generated files and compiled artifacts"),
         ("run", "run testcases and print their results"),
     ):
         command = commands.add_parser(name, help=help_text)
+        command.add_argument(
+            "problem",
+            nargs="?",
+            help="problem id, slug, or directory name; defaults to active_problem",
+        )
         language_options = command.add_mutually_exclusive_group()
         language_options.add_argument(
             "-l",
@@ -73,17 +78,14 @@ def main(argv: Sequence[str] | None = None) -> int:
     try:
         project = load_project()
 
-        problem = load_workspace(project)
-
-        if arguments.command == "info":
-            marker = " (placeholder)" if problem.is_placeholder else ""
-            languages = ", ".join(sorted(problem.solution_files))
-            print(f"Active workspace: {problem.display_name}{marker}")
-            print(f"Languages: {languages}")
-            if problem.source_url:
-                print(f"Source: {problem.source_url}")
+        if arguments.command == "list":
+            for problem in discover_problems(project):
+                active = "*" if problem.key == project.active_problem else " "
+                languages = ", ".join(sorted(problem.solution_files))
+                print(f"{active} {problem.key} [{languages}]")
             return 0
 
+        problem = resolve_problem(project, arguments.problem)
         cases = _select_case(load_cases(problem), arguments.case_number)
         languages = (
             sorted(problem.solution_files)
@@ -99,12 +101,24 @@ def main(argv: Sequence[str] | None = None) -> int:
 
             if arguments.command == "prepare":
                 adapter.prepare(problem, cases)
-                print(f"Prepared {problem.display_name} for {language}")
+                print(f"Prepared {problem.key} for {language}")
                 continue
 
             results = adapter.run(problem, cases)
+<<<<<<< HEAD
             if len(languages) > 1:
                 print(f"== {language} ==")
+=======
+            print(f"{problem.key} | {language} | {len(results)} case(s)")
+            if arguments.command == "run":
+                for index, result in enumerate(results, start=1):
+                    _print_run_result(index, result)
+                exit_code |= int(
+                    any(result.error is not None for result in results)
+                )
+                continue
+
+>>>>>>> parent of 82822b9 (remove unused files, refactor system usage)
             for index, result in enumerate(results, start=1):
                 _print_run_result(index, result)
             exit_code |= int(any(result.error is not None for result in results))

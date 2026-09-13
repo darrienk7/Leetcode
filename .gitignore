@@ -1,36 +1,81 @@
-# Local IDE state
+# =====================
+# IntelliJ / CLion / PyCharm IDE files
+# =====================
 .idea/
 *.iml
 
-# Python runtime state
+# =====================
+# Java
+# =====================
+out/
+*.class
+
+# =====================
+# C++ / CMake
+# =====================
+cmake-build-*/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+compile_commands.json
+
+# Compiled executables
+*.exe
+*.out
+main
+
+# Object files
+*.o
+*.obj
+
+# =====================
+# Python
+# =====================
+
+# Byte-compiled / cache files
 __pycache__/
 *.py[cod]
 *$py.class
+
+# Virtual environments
 .venv/
 venv/
 env/
 ENV/
-.pytest_cache/
-.coverage
-.coverage.*
-htmlcov/
-.mypy_cache/
-.ruff_cache/
-.pyre/
-.ipynb_checkpoints/
 
-# Generated harnesses, compiled artifacts, and packaging output
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Build / distribution files
 build/
 dist/
 *.egg-info/
 .eggs/
 
-# Local secrets and logs
-.env
-.env.*
-!.env.example
+# Testing / coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+
+# Type checker / linter caches
+.mypy_cache/
+.ruff_cache/
+.pyre/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# =====================
+# Logs
+# =====================
 *.log
 
+# =====================
 # OS files
+# =====================
 .DS_Store
 Thumbs.db

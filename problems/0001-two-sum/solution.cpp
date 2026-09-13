@@ -1,4 +1,3 @@
-// PLACEHOLDER: replace this method for the active problem.
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {

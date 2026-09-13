@@ -8,19 +8,15 @@ from typing import Any
 @dataclass(frozen=True)
 class ProjectConfig:
     root: Path
-    workspace: Path
+    active_problem: str
     default_language: str
 
 
 @dataclass(frozen=True)
 class Problem:
     root: Path
-    frontend_id: str
-    title: str
+    problem_id: int
     slug: str
-    source_provider: str
-    source_url: str
-    is_placeholder: bool
     class_name: str
     method_name: str
     parameter_types: tuple[str, ...]
@@ -28,9 +24,8 @@ class Problem:
     solution_files: dict[str, str]
 
     @property
-    def display_name(self) -> str:
-        identifier = f"{self.frontend_id}. " if self.frontend_id else ""
-        return f"{identifier}{self.title}"
+    def key(self) -> str:
+        return f"{self.problem_id:04d}-{self.slug}"
 
     @property
     def cases_path(self) -> Path:
@@ -44,15 +39,7 @@ class Problem:
                 f"Active problem {self.display_name!r} has no "
                 f"{language!r} solution configured"
             ) from error
-        workspace_root = self.root.resolve()
-        candidate = (workspace_root / filename).resolve()
-        try:
-            candidate.relative_to(workspace_root)
-        except ValueError as error:
-            raise ValueError(
-                f"Solution path for {language!r} leaves the workspace: {filename}"
-            ) from error
-        return candidate
+        return self.root / filename
 
 
 @dataclass(frozen=True)
